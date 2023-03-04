@@ -1,8 +1,115 @@
-POST http://localhost:1234/api/book
+### CREATE USER
+POST http://localhost:1234/users/register 
 Content-Type: application/json
 
 {
-"name": "Little", 
-"author": "Elsa Holmelund Minarik",
-"pages": "63"
+    "username":"John",
+    "password":"Hello1234@@",
+    "registerdate":"2023-3-4",
+    "bio": "Hello there"
+}
+
+### Login USER
+POST http://localhost:1234/users/authenticate
+Content-Type: application/json
+
+{
+    "username":"John",
+    "password":"Hello1234@@"
+}
+
+### Log out
+GET  http://localhost:5000/1234/logout
+
+### Get profile
+GET http://localhost:1234/users/profile
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
+
+### Post codeSnippet
+POST http://localhost:1234/snippets/add
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
+Content-Type: application/json
+
+{
+    "title": "Example 2",
+    "explanation": "Text for codeSnippet",
+    "code": "console.log(\"Hello world\")",
+    "user": "64035ce92b532cc9e9510003",
+    "latestEdit":"2023-3-4"
+}
+
+### Get user snippets
+GET http://localhost:1234/users/snippets
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
+Content-Type: application/json
+
+{
+    "username": "John"
+}
+
+### Edit snippet
+PATCH http://localhost:1234/snippets/edit
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
+Content-Type: application/json
+
+{
+    "_id": "640365cc746e5f6f118f2561",
+    "title": "Example 1 edited",
+    "latestEdit":"2023-3-4"
+}
+
+### Delete snippet
+DELETE http://localhost:1234/snippets/delete
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
+Content-Type: application/json
+
+{
+    "_id": "640365cc746e5f6f118f2561"
+}
+
+### Get all snippest
+GET http://localhost:1234/snippets/codeSnippets
+
+### Post comment
+POST http://localhost:1234/comments/add
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
+Content-Type: application/json
+
+{
+    "comment": "Comment 1",
+    "user": "64035ce92b532cc9e9510003",
+    "codeSnippet": "64036d595b5df4c0e308a01d",
+    "latestEdit":"2023-3-4"
+}
+
+### Edit comment
+PATCH http://localhost:1234/comments/edit
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
+Content-Type: application/json
+
+{
+    "_id":"64037016eca9eb1f1a3d8d5c",
+    "comment": "Comment 1 edited"
+}
+
+### Get all comments
+GET http://localhost:1234/comments/comments
+
+
+### Get user comments
+GET http://localhost:1234/users/comments
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
+Content-Type: application/json
+
+{
+    "username": "John"
+}
+
+### Get snippets comments
+GET http://localhost:1234/snippets/comments
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
+Content-Type: application/json
+
+{
+    "_id": "64036d595b5df4c0e308a01d"
 }
