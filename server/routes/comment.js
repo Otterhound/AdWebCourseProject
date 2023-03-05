@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const Comment = require("../models/comment");
 
-// Create CodeSnippet
+// Create Comment, only if authenticated
 router.post("/add", passport.authenticate('jwt', {session:false}) ,async (req, res) => {
     let newComment = new Comment({
         ...req.body
@@ -16,7 +16,7 @@ router.post("/add", passport.authenticate('jwt', {session:false}) ,async (req, r
     }
 });
 
-// Edit CodeSnippet
+// Edit Comment, only if authenticated
 router.patch("/edit", passport.authenticate('jwt', {session:false}) ,async (req, res) => {
     try {
         await Comment.findByIdAndUpdate(req.body._id, req.body, { new: true }).then((comment) => {
@@ -30,7 +30,7 @@ router.patch("/edit", passport.authenticate('jwt', {session:false}) ,async (req,
     }
 });
 
-// Delete CodeSnippet 
+// Delete Comment, only if authenticated 
 router.delete('/delete', passport.authenticate('jwt', {session:false}) ,async (req, res) => {
     let info;
     try {

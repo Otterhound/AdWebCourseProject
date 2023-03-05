@@ -8,6 +8,12 @@ export default function Post() {
 
     let navigate = useNavigate();
 
+    /*
+    Gets JWT token from cookies,
+    gets user profile information,
+    then posts users snippet,
+    navigates to home page
+    */
     const handlePost = async (e) => {
         e.preventDefault();
         let userJson;

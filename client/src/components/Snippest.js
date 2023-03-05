@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
+// Snippet component, displays title, explanation, code, username, latests edit time
 export default function Snippet({title, explanation, code, user, latestEdit}) {
 
     return (

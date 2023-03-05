@@ -12,6 +12,7 @@ export default function Profile() {
     const [bio, setbio] = useState([]);
     const [registerdate, setRegisterDate] = useState([]);
 
+    // Gets user profile information from server
     const loadProfile = async () => {
         const token = document.cookie
         .split("; ")

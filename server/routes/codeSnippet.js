@@ -4,7 +4,7 @@ const passport = require('passport');
 const CodeSnippet = require("../models/codeSnippet");
 const Comment = require("../models/comment");
 
-// Create CodeSnippet
+// Create Snippet, only if authenticated
 router.post("/add", passport.authenticate('jwt', {session:false}) ,async (req, res) => {
     let newCodeSnippet = new CodeSnippet({
         ...req.body
@@ -17,7 +17,7 @@ router.post("/add", passport.authenticate('jwt', {session:false}) ,async (req, r
     }
 });
 
-// Edit CodeSnippet
+// Edit Snippet, only if authenticated
 router.patch("/edit", passport.authenticate('jwt', {session:false}) ,async (req, res) => {
     try {
         await CodeSnippet.findByIdAndUpdate(req.body._id, req.body, { new: true }).then((snippet) => {
@@ -31,7 +31,7 @@ router.patch("/edit", passport.authenticate('jwt', {session:false}) ,async (req,
     }
 });
 
-// Delete CodeSnippet 
+// Delete Snippet, only if authenticated 
 router.delete('/delete', passport.authenticate('jwt', {session:false}) ,async (req, res) => {
     let info;
     try {
@@ -43,7 +43,7 @@ router.delete('/delete', passport.authenticate('jwt', {session:false}) ,async (r
 });
 
 
-// Get CodeSnippets
+// Get All Snippets
 router.get('/codeSnippets', async (req, res) => {
     let snippets = await CodeSnippet.find();
     if (Object.keys(snippets).length === 0) {
@@ -54,7 +54,7 @@ router.get('/codeSnippets', async (req, res) => {
     }
 });
 
-// Get snippets comments
+// Get Comments on Snippet, by req query id, only if authenticated
 router.get('/comments', passport.authenticate('jwt', {session:false}), async (req, res) => {
     let snippet = await CodeSnippet.findOne({_id: req.query.id});
     let comments = await Comment.find({codeSnippet: snippet._id});

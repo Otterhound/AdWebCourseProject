@@ -8,6 +8,12 @@ export default function PostComment() {
 
     let navigate = useNavigate();
 
+    /*
+    Gets JWT token from cookies,
+    gets user profile information,
+    then posts users comment,
+    navigates to snippet page
+    */
     const handlePost = async (e) => {
         e.preventDefault();
         let userJson;

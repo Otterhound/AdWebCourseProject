@@ -11,6 +11,12 @@ export default function Snippets() {
 
     const [listItems, setListItems] = useState([]);
 
+    /*
+    Gets posted snippets from server,
+    Incase if snipped list item is clicked,
+    stores item information to browser cookies,
+    and navigates to snipped page
+    */
     const loadPosts = async () => {
         try {
         let res = await fetch('http://localhost:1234/snippets/codeSnippets', {
@@ -18,6 +24,7 @@ export default function Snippets() {
     });
     let resJson = await res.json();
     if (res.status === 200) {
+        // Creates list of snippets
         const list = resJson.snippets.map((s) => <li key={s._id} onClick={() => {
             document.cookie = "clickedId=" + s._id;
             document.cookie = "clickedTitle=" + s.title;
@@ -41,6 +48,11 @@ export default function Snippets() {
 }
     }
 
+    /* 
+    Checks if user has been authorized,
+    if yes navigates to snipped post page,
+    if no navigates to home page
+    */
     const checkIfLogIn = async () => {
         const token = document.cookie
         .split("; ")

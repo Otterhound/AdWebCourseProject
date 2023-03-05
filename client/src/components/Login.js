@@ -8,6 +8,7 @@ export default function LogIn() {
 
     let navigate = useNavigate();
 
+    // Logs user in, and saves JWT token to browser cookies
     const handleLogin = async (e) => {
         e.preventDefault();
         let myheaders = new Headers();

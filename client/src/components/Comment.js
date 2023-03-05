@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
+// Comment component, displays username, comment, latests edit time
 export default function Comment({comment, user, latestEdit}) {
 
     return (

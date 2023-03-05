@@ -12,31 +12,37 @@ export default function SnippedAndComment() {
 
     const [listItems, setListItems] = useState([]);
 
+    // Gets snippet title from cookies
     const title = document.cookie
         .split("; ")
         .find((row) => row.startsWith("clickedTitle"))
         ?.split("=")[1];
 
+    // Gets snippet explanation from cookies
     const explanation = document.cookie
         .split("; ")
         .find((row) => row.startsWith("clickedExplanation"))
         ?.split("=")[1];
 
+    // Gets snippet code from cookies
     const code = document.cookie
         .split("; ")
         .find((row) => row.startsWith("clickedCode"))
         ?.split("=")[1];
 
+    // Gets snippet user from cookies
     const user = document.cookie
         .split("; ")
         .find((row) => row.startsWith("clickedUser"))
         ?.split("=")[1];
 
+    // Gets snippet latest edited time from cookies
     const latestEdit = document.cookie
         .split("; ")
         .find((row) => row.startsWith("clickedlatestEdit"))
         ?.split("=")[1];
 
+    // Loads all comments on a post
     const loadComments = async () => {
         try {
         const id = document.cookie
@@ -56,6 +62,7 @@ export default function SnippedAndComment() {
     });
     let resJson = await res.json();
     if (res.status === 200) {
+        // Creates list of comment components
         const list = resJson.comments.map((c) => <li key={c._id} ><Comment 
         comment={c.comment}
         user={c.username}
@@ -69,6 +76,11 @@ export default function SnippedAndComment() {
 }
     }
 
+    /* 
+    Checks if user has been authorized,
+    if yes navigates to comment post page,
+    if no navigates to home page
+    */
     const checkIfLogIn = async () => {
         const token = document.cookie
         .split("; ")

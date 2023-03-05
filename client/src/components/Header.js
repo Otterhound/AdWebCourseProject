@@ -10,6 +10,7 @@ const Header = () => {
 
     let navigate = useNavigate();
 
+    // Logs user out and deletes JWT cookie from browser, then navigates to home page
     const logOut = async (e) => {
         e.preventDefault();
         try {
@@ -28,6 +29,11 @@ const Header = () => {
     }
     };
 
+    /* 
+    Checks if user has been authorized,
+    if yes navigates to profile page,
+    if no navigates to home page
+    */
     const checkIfLogIn = async () => {
         const token = document.cookie
         .split("; ")

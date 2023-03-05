@@ -8,6 +8,7 @@ export default function Register() {
 
     let navigate = useNavigate();
 
+    // Sends user profile information to server, and creates new user account
     const handleRegister = async (e) => {
         e.preventDefault();
         let registerdate = new Date();
