@@ -39,8 +39,8 @@ const addUser =  function(newUser, callback) {
     });
 }
 
-// Authenticate
-router.post('/authenticate', async (req, res, next) => {
+// User login
+router.post('/login', async (req, res, next) => {
     const name = req.body.username;
     const password = req.body.password;
 
@@ -74,10 +74,9 @@ comparePassword = function(candidatePassword, hash, callback) {
     });
 }
 
-// Log out              // HUOM muuta redirect varmaankin 
+// Log out
 router.get("/logout", async (req, res) => {
-    res.cookie("jwt","", {maxAge: 1});
-    res.redirect("/");
+    res.json({message: "User logout"});
 });
 
 // Profile

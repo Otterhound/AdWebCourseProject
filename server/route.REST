@@ -1,16 +1,16 @@
 ### CREATE USER
-POST http://localhost:1234/users/register 
+POST http://localhost:1234/user/register 
 Content-Type: application/json
 
 {
-    "username":"John",
-    "password":"Hello1234@@",
+    "username":"a",
+    "password":"Hello",
     "registerdate":"2023-3-4",
     "bio": "Hello there"
 }
 
 ### Login USER
-POST http://localhost:1234/users/authenticate
+POST http://localhost:1234/user/login
 Content-Type: application/json
 
 {
@@ -22,7 +22,7 @@ Content-Type: application/json
 GET  http://localhost:5000/1234/logout
 
 ### Get profile
-GET http://localhost:1234/users/profile
+GET http://localhost:1234/user/profile
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
 
 ### Post codeSnippet
@@ -39,7 +39,7 @@ Content-Type: application/json
 }
 
 ### Get user snippets
-GET http://localhost:1234/users/snippets
+GET http://localhost:1234/user/snippets
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
 Content-Type: application/json
 
@@ -97,7 +97,7 @@ GET http://localhost:1234/comments/comments
 
 
 ### Get user comments
-GET http://localhost:1234/users/comments
+GET http://localhost:1234/user/comments
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
 Content-Type: application/json
 
@@ -106,10 +106,5 @@ Content-Type: application/json
 }
 
 ### Get snippets comments
-GET http://localhost:1234/snippets/comments
+GET http://localhost:1234/snippets/comments?id=64036d595b5df4c0e308a01d
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY0MDM1Y2U5MmI1MzJjYzllOTUxMDAwMyIsInVzZXJuYW1lIjoiSm9obiIsInBhc3N3b3JkIjoiJDJhJDEwJEE2dG4wYzhCcXRwTDV5ZWtsWEVGV3V0US96L01Yd0QyODVnWE4wY2ZKUlAzWnNYWUZkelMyIiwicmVnaXN0ZXJkYXRlIjoiMjAyMy0wMy0wM1QyMjowMDowMC4wMDBaIiwiYmlvIjoiSGVsbG8gdGhlcmUiLCJfX3YiOjB9LCJpYXQiOjE2Nzc5NDI1MTYsImV4cCI6MTY3ODU0NzMxNn0.j9NXCuqHoAy8NRvJ4qFCrjuBoIdPb5LrCJDBG65tIlY
-Content-Type: application/json
-
-{
-    "_id": "64036d595b5df4c0e308a01d"
-}

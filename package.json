@@ -15,7 +15,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^7.6.0",
-    "http-proxy-middleware": "^2.0.6"
+    "concurrently": "^7.6.0"
   }
 }

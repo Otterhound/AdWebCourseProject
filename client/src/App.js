@@ -1,39 +1,29 @@
+import './App.css';
+import Heade from './components/Header';
+import Login from "./components/Login";
+import Register from './components/Register';
+import Profile from './components/Profile';
+import Snippets from './components/Snippests';
+import Post from './components/Postsnippet';
+import SnippedAndComment from './components/Commentsnippet';
+import PostComment from './components/PostComment';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App() {
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    let myheaders = new Headers();
-    myheaders.append('Content-Type', 'application/json')
-    try {
-    let res = await fetch('/api/book', {
-      method: "POST",
-      headers: myheaders,
-      body: JSON.stringify({
-        name: e.target.elements.name.value,
-        author: e.target.elements.author.value,
-        pages: e.target.elements.pages.value
-      })
-    });
-  let resJson = await res.json();
-  if (res.status === 200) {
-    console.log(resJson);
-  }
-  } catch (err) {
-    console.log(err);
-  }
-  };
-
   return (
-    <div>
-      <h1> books </h1>
-      <form id="form" onSubmit={handleSubmit}>
-        Name: <input type="text" name="name" id="name"></input>
-        Author <input type="text" name="author" id="author"></input>
-        Pages <input type="number" name="pages" id="pages"></input>
-        <button type="submit" id="submit"> Submit </button>
-      </form>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path='/' element={<div><Heade></Heade><Snippets></Snippets></div>}> </Route>
+          <Route path='/register' element={<div><Heade></Heade><Register></Register></div>}> </Route>
+          <Route path='/login' element={<div><Heade></Heade><Login></Login></div>}> </Route>
+          <Route path='/profile' element={<div><Heade></Heade><Profile></Profile></div>}> </Route>
+          <Route path='/post' element={<div><Heade></Heade><Post></Post></div>}> </Route>
+          <Route path='/snippet' element={<div><Heade></Heade><SnippedAndComment></SnippedAndComment></div>}> </Route>
+          <Route path='/comment' element={<div><Heade></Heade><PostComment></PostComment></div>}> </Route>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

@@ -56,7 +56,7 @@ router.get('/codeSnippets', async (req, res) => {
 
 // Get snippets comments
 router.get('/comments', passport.authenticate('jwt', {session:false}), async (req, res) => {
-    let snippet = await CodeSnippet.findOne({_id: req.body._id});
+    let snippet = await CodeSnippet.findOne({_id: req.query.id});
     let comments = await Comment.find({codeSnippet: snippet._id});
     if (Object.keys(comments).length === 0) {
         return res.json({success: false, msg: 'Snippet has no comments'});

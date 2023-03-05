@@ -39,22 +39,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
 
-app.use('/users', userRouter);
+/*
+let corsOptions = {
+    origin: "http://localhost:3000",
+    optionsSuccessStatus: 200,
+};
+*/
+
+app.use(cors());
+
+app.use('/user', userRouter);
 app.use('/snippets', codeSnippetRouter);
 app.use('/comments', commentRouter);
-
-// Ponder if delete this 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.resolve("..", "client", "build")));
-    app.get("*", (req, res) =>
-        res.sendFile(path.resolve("..", "client", "build", "index"))
-    );
-} else if (process.env.NODE_ENV === "development") {
-    var corsOptions = {
-        origin: "http://localhost:3000",
-        optionsSuccessStatus: 200,
-    };
-    app.use(cors(corsOptions));
-}
 
 module.exports = app;
